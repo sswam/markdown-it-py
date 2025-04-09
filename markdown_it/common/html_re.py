@@ -20,8 +20,12 @@ processing = "<[?][\\s\\S]*?[?]>"
 declaration = "<![A-Z]+\\s+[^>]*>"
 cdata = "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>"
 
+container = r"<([A-Za-z][A-Za-z0-9\-]*)" + attribute + r"*\s*>(.*?)<\/\1>"
+
 HTML_TAG_RE = re.compile(
     "^(?:"
+    + container
+    + "|"
     + open_tag
     + "|"
     + close_tag
